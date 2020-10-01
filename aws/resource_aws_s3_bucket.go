@@ -1281,6 +1281,7 @@ func resourceAwsS3BucketRead(d *schema.ResourceData, meta interface{}) error {
 			// the provider s3_force_path_style configuration, which defaults to
 			// false, but allows override.
 			r.Config.S3ForcePathStyle = s3conn.Config.S3ForcePathStyle
+			r.Config.Credentials = s3conn.Config.Credentials
 		})
 	})
 	if err != nil {

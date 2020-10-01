@@ -100,6 +100,9 @@ func bucketLocation(client *AWSClient, d *schema.ResourceData, bucket string) er
 		// the provider s3_force_path_style configuration, which defaults to
 		// false, but allows override.
 		r.Config.S3ForcePathStyle = client.s3conn.Config.S3ForcePathStyle
+
+		// Use the current credentials when getting the bucket region.
+		r.Config.Credentials = client.s3conn.Config.Credentials
 	})
 	if err != nil {
 		return err
